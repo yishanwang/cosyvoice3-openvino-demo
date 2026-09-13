@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Cloned upstream CosyVoice source (get it via the README instructions)
+CosyVoice/
+
+# Model package (clone/download separately -- see README)
+model/
+*.xml
+*.bin
+*.onnx
+
+# Output audio
+*.wav
+
+# Editors / OS
+.vscode/
+.DS_Store

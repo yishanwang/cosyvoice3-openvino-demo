@@ -1,0 +1,45 @@
+# Same pinned dependency set as the conversion repo's requirements.txt --
+# this demo imports the identical third_party/ov_cosyvoice_helper.py, which
+# needs the full CosyVoice/Matcha-TTS Python environment (tokenizer, mel
+# feature extraction, AutoModel import chain), not just openvino.
+#
+# IMPORTANT: install into a FRESH, fully isolated venv (no --system-site-packages).
+#
+#   python -m venv .venv && source .venv/bin/activate
+#   pip install --upgrade pip
+#   pip install --index-url https://download.pytorch.org/whl/cpu -r requirements.txt
+#
+# See https://github.com/yishanwang/cosyvoice3-openvino-conversion for the
+# scripts that produced the OV IR package this demo consumes.
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.3.1
+torchaudio==2.3.1
+numpy==1.26.4
+openvino
+
+conformer==0.3.2
+diffusers==0.29.0
+hydra-core==1.3.2
+HyperPyYAML==1.2.3
+librosa==0.10.2
+lightning==2.2.4
+matplotlib==3.7.5
+networkx==3.1
+omegaconf==2.3.0
+onnx==1.16.0
+onnxruntime==1.18.0
+protobuf==4.25
+pyworld==0.3.4
+rich
+setuptools==75.8.0
+soundfile==0.12.1
+transformers==4.51.3
+x-transformers==2.11.24
+
+# ov_cosyvoice_helper.py imports nncf and cosyvoice.cli.cosyvoice.AutoModel
+# at module load time (needed to reach the tokenizer/mel-extractor helpers
+# this demo actually uses, even though it never runs NNCF quantization).
+nncf
+pyarrow==18.1.0
